@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zafeer Arefeen Research Portfolio</title>
+<meta name="description" content="Zafeer Arefeen, UT Austin mathematics. Evergreen private markets fund review and a USD.AI private credit memo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a fund research note read by PMs and recruiters in two minutes
+   IDEA an asset manager's quarterly fund review, finding first, sources at the back
+   PICTURE quarterly net flows of four funds on one zero line: PE money in, credit money out
+   COLOUR white ground, navy ink, the brief's four fixed fund colours, muted red only for flags
+   TYPE Source Serif 4 for headings and big figures + Inter for text and tables
+   LAYOUT laptop: title band with figure row, full-width flows chart; phone: stacked title, figures, chart */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1622);--ink:light-dark(#1b2a41,#e7ecf3);--mut:light-dark(#5a6677,#9aa7b8);--rule:light-dark(#dfe3e8,#26344a);--band:light-dark(#f3f5f8,#142033);--red:light-dark(#b5473a,#e07a6c);--kpec:light-dark(#1b2a41,#c9d6ea);--bxpe:light-dark(#6c7a89,#7d8b9b);--bcred:light-dark(#c08a3e,#d9a65c);--hlend:light-dark(#2a7f7a,#4fb3ac)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:0}
+h1{font-size:clamp(30px,4.4vw,48px);text-wrap:balance;max-width:28ch}
+h2{font-size:clamp(24px,3vw,32px);text-wrap:balance;max-width:30ch;margin-bottom:12px}
+h3{font-size:19px;margin-bottom:6px}
+p{margin:0 0 12px;max-width:68ch}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.alt{background:var(--band)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;padding:10px max(5vw,16px)}
+nav b{font-family:"Source Serif 4",Georgia,serif;font-size:17px;margin-right:auto}
+nav a{text-decoration:none;color:var(--mut);font-size:14px;padding:6px 0}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+.lede{font-size:18px;color:var(--mut);margin-top:14px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--ink);border-radius:6px;background:var(--bg);color:var(--ink);font:500 15px Inter,sans-serif;text-decoration:none;cursor:pointer}
+.btn.pri{background:var(--ink);color:var(--bg)}
+.btn:focus-visible{outline:3px solid var(--hlend);outline-offset:2px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));gap:0;margin:28px 0 8px;border-top:1px solid var(--rule)}
+.figs div{padding:14px 16px 6px 0}
+.figs strong{display:block;font:600 clamp(26px,3vw,34px)/1.1 "Source Serif 4",Georgia,serif;white-space:nowrap}
+.figs span{font-size:14px;color:var(--mut)}
+.neg{color:var(--red)}
+.fig{position:relative;min-height:340px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{font:13px Inter,sans-serif;fill:var(--mut);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.cap{font-size:13px;color:var(--mut);margin-top:8px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;margin:6px 0 8px}
+.key i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,30em),1fr));gap:28px 40px;align-items:start}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19em),1fr));gap:20px}
+.card{border-top:3px solid var(--ink);padding-top:12px}
+.card.sm{border-top-width:1px}
+.card .src{font-size:13px;color:var(--mut)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--bg)}
+.alt th:first-child,.alt td:first-child{background:var(--band)}
+thead th{font-weight:600;border-bottom:2px solid var(--ink)}
+td.flag{color:var(--red);font-weight:600}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:9.5em minmax(0,1fr) 5.5em;gap:12px;align-items:center;font-size:14px}
+.bar{display:flex;height:22px;background:var(--rule);border-radius:3px;overflow:hidden;position:relative}
+.bar>i{display:block;height:100%}
+.row .v{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mark{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--red)}
+.rec{font-weight:600}
+ul{margin:0 0 12px;padding-left:20px}
+li{margin-bottom:6px;max-width:68ch}
+details{border-top:1px solid var(--rule);padding:12px 0}
+summary{cursor:pointer;font-weight:600;min-height:28px}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17em),1fr));gap:16px}
+.dl a{display:block;padding:16px;border:1px solid var(--rule);border-radius:8px;text-decoration:none;min-height:44px}
+.dl a:hover,.dl a:focus-visible{border-color:var(--ink)}
+.dl b{display:block}
+.dl span{font-size:14px;color:var(--mut)}
+#dlmsg{font-size:14px;color:var(--mut);min-height:22px;margin-top:10px}
+.steps{padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11em),1fr));gap:0;counter-reset:st;margin:8px 0 6px}
+.steps li{list-style:none;border-top:3px solid var(--hlend);padding:10px 14px 4px 0;margin:0;font-size:14px;color:var(--mut)}
+.steps li b{display:block;color:var(--ink);font-size:16px}
+.steps li b::before{counter-increment:st;content:counter(st) ". "}
+.sev{font-weight:600}.sev.h{color:var(--red)}
+td.w{white-space:normal;text-align:left;min-width:14em}
+footer{font-size:13px;color:var(--mut);border-top:1px solid var(--rule)}
+@media(max-width:600px){table{font-size:13px}th,td{padding:6px 6px}.row{grid-template-columns:6.5em minmax(0,1fr) 4.5em;font-size:13px}nav .wrap{gap:2px 12px}}
+@media(prefers-reduced-motion:no-preference){.bar>i{transition:width .6s ease}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Zafeer Arefeen</b><a href="#findings">Findings</a><a href="#funds">Funds</a><a href="#liquidity">Liquidity</a><a href="#fees">Fees</a><a href="#allocation">Allocation</a><a href="#method">Method</a><a href="#usdai">USD.AI memo</a><a href="#downloads">Downloads</a></div></nav>
+
+<header class="band"><div class="wrap">
+<h1>Private credit money is leaving while private equity keeps raising. My allocation: 65%&nbsp;K&#8209;PEC, 35%&nbsp;HLEND.</h1>
+<p class="lede">Evergreen Private Markets Fund Review: four evergreen funds compared from 55 SEC filings, a 10-tab monitoring workbook, and an investment committee memo on how a $3M client should invest a $450,000 alternatives sleeve. Data as of 9/30/2026, Class I shares.</p>
+<div class="btns"><a class="btn pri" href="files/IC_Memo_Evergreen_Allocation.pdf" data-dl="IC_Memo_Evergreen_Allocation.pdf" target="_blank" rel="noopener">Read the IC memo (PDF)</a><a class="btn" href="files/Evergreen_Fund_Monitor.xlsx" download>Download the workbook (Excel)</a><a class="btn" href="files/Evergreen_Fund_Review_Summary.pdf" target="_blank" rel="noopener">View the summary deck (PDF)</a></div>
+<div class="figs">
+<div><strong>35%</strong><span>of the sleeve in gated funds (limit 40%)</span></div>
+<div><strong>$15,460</strong><span>annual income, 3.4% yield*</span></div>
+<div><strong>1.64%</strong><span>blended base fees</span></div>
+<div><strong class="neg">&minus;$3,482M</strong><span>BCRED net flows, last 4 quarters</span></div>
+</div>
+<h2 style="margin-top:28px">Quarterly net flows, $M: credit funds turned negative in 2026</h2>
+<div class="key" id="k1"></div>
+<div class="fig" style="min-height:360px"><svg id="flows" role="img" aria-label="Quarterly net flows by fund, Q1 2024 to Q3 2026"></svg></div>
+<p class="cap">Subscriptions minus redemptions from each fund's cash flow statement, Q1 2024 to Q3 2026. Cash basis. *Calculated from 9/30/26 distribution rates; not a forecast.</p>
+</div></header>
+
+<section class="band alt" id="findings"><div class="wrap">
+<h2>What the filings show</h2>
+<div class="cards">
+<div class="card"><h3>HLEND is gated, and it's the only fund that says by how much</h3><p>Redemption requests were 9.25%, 13.30% and 11.44% of shares in Q1, Q2 and Q3 2026, against a 5% quarterly offer. In Q3, investors got about 44% of what they asked for. In 2025, every request was met in full.</p><p class="src">HLEND 10-Q, Q3 2026, share repurchase table</p></div>
+<div class="card"><h3>BCRED's credit quality and flows turned at the same time</h3><p>Non-accruals rose from 0.6% to 2.7% at cost between 12/31/25 and 9/30/26. Net flows went from +$1,976M in Q4 2025 to &minus;$1,899M in Q3 2026. Repurchases were prorated in Q2 and Q3 2026.</p><p class="src">BCRED 10-Q, Q3 2026; 10-K, FY2025</p></div>
+<div class="card"><h3>Private equity is still taking in money</h3><p>In Q3 2026, K-PEC had +$732M and BXPE +$1,485M of net inflows, and each repurchased about 0.4% to 0.5% of NAV, well under its cap.</p><p class="src">K-PEC and BXPE 10-Q, Q3 2026, cash flow statements</p></div>
+<div class="card sm"><h3>Credit distributions are falling with rates</h3><p>BCRED's Class I quarterly distribution fell 18.2% year over year ($0.66 to $0.54); HLEND's fell 7.7% ($0.65 to $0.60).</p></div>
+<div class="card sm"><h3>On the same basis, base fees are close</h3><p>Management fee plus servicing plus other expenses run 1.44% (BCRED) to 1.94% (BXPE). Most of the cost difference comes from performance fees and interest on borrowings.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="funds"><div class="wrap">
+<h2>The four funds side by side</h2>
+<p>As of 9/30/2026, Class I shares. Red cells trip a workbook risk flag.</p>
+<div class="scroll"><table>
+<thead><tr><th></th><th>K-PEC</th><th>BXPE</th><th>BCRED</th><th>HLEND</th></tr></thead>
+<tbody id="ft"></tbody></table></div>
+<p class="cap">*Calculated from returns and distributions reported in the filings (chain-linked or annualized), not figures the funds report. Flag rules: non-accruals above 2% at cost, requests above the quarterly limit, debt-to-equity above 1.25x, net outflows.</p>
+<h3 style="margin-top:28px">NAV per share, Class I: PE marks climbed every quarter while credit NAVs drifted down</h3>
+<div class="key" id="k3"></div>
+<div class="fig" style="min-height:300px"><svg id="nav" role="img" aria-label="NAV per share by quarter, 12/31/23 to 9/30/26"></svg></div>
+<p class="cap">Quarter-end NAV per share, $, 12/31/2023 to 9/30/2026. BXPE began 1/2/2024. NAV excludes distributions: the credit funds pay out most of their income, so a falling NAV does not mean a negative total return. PE NAVs rely on manager valuations and move more smoothly than public markets.</p>
+</div></section>
+
+<section class="band alt" id="liquidity"><div class="wrap grid2">
+<div>
+<h2>Both credit funds hit their 5% repurchase cap in 2026</h2>
+<p>BDC repurchase programs usually cap buybacks at 5% of shares a quarter. When requests exceed the cap, every investor gets the same fraction back and must resubmit the rest. Only HLEND discloses the size of the requests.</p>
+<p>K-PEC repurchased 0.5% and BXPE 0.4% of NAV in Q3 2026; neither disclosed request sizes or any proration.</p>
+<div class="key" id="k2"></div>
+</div>
+<div><div class="fig"><svg id="liq" role="img" aria-label="Shares repurchased and requested per quarter, BCRED and HLEND"></svg></div>
+<p class="cap">% of shares outstanding, Q4 2024 to Q3 2026. BCRED request sizes not disclosed. Dashed line: 5% quarterly limit.</p></div>
+</div></section>
+
+<section class="band" id="fees"><div class="wrap grid2">
+<div>
+<h2>Fees on one basis: leverage and performance fees drive the cost gap</h2>
+<p>Fund fee tables aren't directly comparable: some include interest on borrowings, some include performance fees, and K-PEC's management fee was offset by credits in FY2025. I split annual cost into three layers and used one definition of base fees for all four.</p>
+<ul class="cap" style="padding-left:16px">
+<li>Base fees = management fee (1.25% for all four) + Class I servicing fee (0%) + other operating expenses.</li>
+<li>K-PEC shown at its contractual fee. In FY2025 its $78.7M management fee was offset by $80.8M of fee credits.</li>
+<li>K-PEC and BXPE are FY2025 actuals; BCRED and HLEND are N-2 prospectus estimates.</li>
+<li>Interest on borrowings is a cost of leverage that also raises income, not a fee paid to the manager.</li>
+</ul>
+</div>
+<div>
+<div class="key"><span><i style="background:var(--ink)"></i>Base fees</span><span><i style="background:var(--bxpe)"></i>Incentive / performance</span><span><i style="background:var(--bcred)"></i>Interest on borrowings</span></div>
+<div class="rows" id="feerows"></div>
+<p class="cap">Annual cost, % of NAV. Base fees on $100,000: K-PEC $1,690, BXPE $1,940, BCRED $1,440, HLEND $1,550.</p>
+</div>
+</div></section>
+
+<section class="band alt" id="allocation"><div class="wrap">
+<h2>The recommended mix is the only one that passes both client limits</h2>
+<div class="grid2">
+<div>
+<h3>Model client</h3>
+<ul>
+<li>Accredited high-net-worth investor, $3,000,000 liquid portfolio, 60/40 stocks/bonds</li>
+<li>15% alternatives sleeve: $450,000; income plus growth; horizon 7+ years</li>
+<li>Limited tolerance for gated redemptions; fee-conscious</li>
+</ul>
+<p>I made the gating constraint testable: at most 40% of the sleeve in funds prorating today, and at most 70% in any one fund. Both limits are my assumptions and are editable inputs in the workbook.</p>
+<h3>Why this mix</h3>
+<ul>
+<li><b>K-PEC, 65% ($292,500):</b> the only eligible fund that isn't prorating, and it is still taking in money.</li>
+<li><b>HLEND, 35% ($157,500):</b> gated, but the stronger credit book (0.8% non-accruals at cost, 94.6% first lien) and it provides the income.</li>
+<li><b>BCRED, 0%:</b> three flags at once. Back on the list if non-accruals fall below 2%, proration ends and flows turn positive.</li>
+<li><b>BXPE, 0%:</b> screened out on eligibility. It's open only to qualified purchasers ($5M+), and the client has $3M. Its 22.4% 1-year return was the best of the four, which is why I check eligibility before returns.</li>
+</ul>
+<p>Trade-offs accepted: less income from the sleeve (bonds stay the main income source), and 65% of the sleeve in one KKR vehicle, 9.75% of the whole portfolio.</p>
+</div>
+<div>
+<div class="key"><span><i style="background:var(--kpec)"></i>K-PEC</span><span><i style="background:var(--bcred)"></i>BCRED</span><span><i style="background:var(--hlend)"></i>HLEND</span></div>
+<div class="rows" id="mixrows"></div>
+<h3 style="margin-top:22px">Share of sleeve in gated funds</h3>
+<div class="rows" id="gaterows"></div>
+<p class="cap">Dashed line: 40% gating limit. All mixes on $450,000; BXPE is 0% in every mix.</p>
+<div class="scroll" style="margin-top:12px"><table>
+<thead><tr><th>Mix</th><th>Yield*</th><th>Income*</th><th>Base fees</th><th>3 layers</th><th>Result</th></tr></thead>
+<tbody id="mixt"></tbody></table></div>
+<p class="cap">*Calculated from 9/30/26 distribution rates; not a forecast. The recommended mix's blended trailing 1-year total return is 10.3% (calculated; past performance).</p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="risks"><div class="wrap grid2">
+<div><h2>Risks I'm accepting</h2>
+<ul>
+<li>Gating: 35% of the sleeve sits in a fund that is prorating today.</li>
+<li>Concentration: 65% in K-PEC.</li>
+<li>Valuation lag: PE NAVs use manager marks and may lag public markets.</li>
+<li>Income shortfall: 3.4% blended yield, and credit distributions are falling as rates fall.</li>
+<li>Rate sensitivity: about 99% of credit fund loans are floating rate.</li>
+<li>Early exit cost: 5% deduction on K-PEC shares held under 2 years.</li>
+</ul></div>
+<div><h2>What triggers a review each quarter</h2>
+<ul>
+<li>Non-accruals above 2% at cost, or rising two quarters in a row</li>
+<li>Debt-to-equity above 1.25x</li>
+<li>Proration lasting four quarters</li>
+<li>Distributions down more than 10% year over year</li>
+<li>A PE fund using more than half its repurchase limit</li>
+</ul></div>
+</div></section>
+
+<section class="band alt" id="method"><div class="wrap">
+<h2>Method, sources and data gaps</h2>
+<div class="grid2">
+<ul>
+<li>55 SEC filings from EDGAR: 38 10-Qs, 15 10-Ks and 2 N-2 prospectuses (K-PEC 12, BXPE 12, BCRED 16, HLEND 15).</li>
+<li>One common date: 9/30/2026, Class I shares. 12 quarters of NAV history and 11 quarters of flows.</li>
+<li>Excel workbook built with Python (openpyxl): 10 tabs, live formulas, a source citation next to every input, conditional-format risk flags and native charts. Recalculated with zero formula errors.</li>
+<li>Total returns chain-linked from fund-reported period returns.</li>
+<li>Passed on: Apollo Aligned Alternatives (no 10-Q or 10-K on EDGAR); Hamilton Lane and StepStone registered funds (latest full data six months older).</li>
+</ul>
+<div>
+<details><summary>Data gaps (9)</summary><ul class="cap" style="margin-top:10px">
+<li>Minimum investment for K-PEC and BXPE: not in SEC filings.</li>
+<li>Gross expense ratio before waivers (BCRED, HLEND) and before credits (K-PEC): not disclosed as a ratio.</li>
+<li>Number of holdings and vintage mix for K-PEC and BXPE: not disclosed.</li>
+<li>BXPE strategy split: not disclosed in the 10-Q.</li>
+<li>BCRED repurchase request sizes: not disclosed; only that Q2 and Q3 2026 requests were prorated.</li>
+<li>K-PEC and BXPE repurchase request sizes: not disclosed.</li>
+<li>Weighted average interest coverage and top-10 concentration for BCRED and HLEND: not disclosed.</li>
+<li>Flows are cash basis: they exclude reinvested distributions and can lag tender dates by a quarter.</li>
+<li>Since-inception and 1-year returns are calculated, not fund-reported.</li>
+</ul></details>
+<details><summary>Next steps with more time</summary><p class="cap" style="margin-top:10px">Compare against fund fact sheets, pull BCRED's tender offer filings for request sizes, rebuild top-10 borrower concentration from the schedules of investments, and stress-test the client's liquidity if credit funds stay prorated.</p></details>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="usdai"><div class="wrap">
+<h2>USD.AI: lend to it through its loan exchange, and wait on the token</h2>
+<div class="grid2">
+<div>
+<p>USD.AI (built by Permian Labs) is an onchain lender that turns stablecoin deposits into GPU loans for small and mid-sized AI cloud operators, the "compute middle market" that banks and large private credit funds mostly skip. My 12-page memo recommends a $5M to $10M lending pilot in its seasoned GPU loans, spread across at least three borrowers, and passing on the CHIP token until loan performance and deposit stability are proven.</p>
+<div class="btns" style="margin-top:8px"><a class="btn pri" href="files/USD_AI_Investment_Memo.pdf" data-dl="USD_AI_Investment_Memo.pdf" target="_blank" rel="noopener">Read the USD.AI memo (PDF)</a></div>
+</div>
+<div class="figs" style="margin-top:0;grid-template-columns:repeat(2,minmax(0,1fr))">
+<div><strong>$305M</strong><span>committed loans: $177M funded, $129M in escrow</span></div>
+<div><strong class="neg">$118M</strong><span>redeemed on Nov 1; ten wallets took 57%</span></div>
+<div><strong>~1/3</strong><span>of depositor yield came from idle cash</span></div>
+<div><strong>~41x</strong><span>CHIP value to annualized protocol revenue</span></div>
+</div>
+</div>
+
+<h3 style="margin-top:24px">How the money moves</h3>
+<ol class="steps">
+<li><b>Deposit</b>Stablecoins swapped for USDai, backed 1:1 by PYUSD. Earns nothing.</li>
+<li><b>Stake</b>USDai staked into sUSDai, a share of the lending vault. Exits through a monthly queue paid from available cash.</li>
+<li><b>Lend</b>Non-recourse loans at 70% to 80% LTV to a company that owns the borrower's GPUs; 1.15x DSCR cash sweep.</li>
+<li><b>Season and sell</b>Cash waits in Wilmington Trust escrow until GPUs are installed; within about a year the loan is sold through GLX.</li>
+<li><b>Recycle</b>Sale proceeds go back into the vault to fund the next loan.</li>
+</ol>
+
+<div class="grid2" style="margin-top:28px">
+<div>
+<h3>Where depositor yield came from: loans covered $26.8M of $40.4M</h3>
+<div class="key"><span><i style="background:var(--hlend)"></i>Active GPU loans</span><span><i style="background:var(--bxpe)"></i>Escrow</span><span><i style="background:var(--bcred)"></i>Idle reserves</span></div>
+<div class="rows" id="yrows"></div>
+<p class="cap">Annual income on the mid-September 2026 book: active loans $181M at 11.3%, escrow $91M at 7.0%, idle reserves $313M needing at least about 4.3%. From a community analyst's breakdown that USD.AI has not confirmed.</p>
+<h3 style="margin-top:22px">Valuation at a $310M fully diluted value (Nov 12, 2026)</h3>
+<div class="scroll"><table><thead><tr><th>Multiple</th><th>Value</th></tr></thead><tbody>
+<tr><td>FDV / annualized fees ($28M)</td><td>about 11x</td></tr>
+<tr><td>FDV / annualized protocol revenue ($7.6M)</td><td>about 41x</td></tr>
+</tbody></table></div>
+<p class="cap">Rich for a lender with no loss record yet, and about 1.75B CHIP unlock in April 2027.</p>
+<h3 style="margin-top:22px">Recommendation</h3>
+<ul>
+<li><b>Now:</b> buy $5M to $10M of seasoned, performing loans through GLX at about 9% to 13%, across at least three borrowers, for secured yield and loan-level data.</li>
+<li><b>Later:</b> revisit a token or equity position only if all four hold: two more quarters with no losses, a redemption cycle without a large outflow, sUSDai yield at or above 7% without top-ups, and the largest borrower under 25% of the book.</li>
+</ul>
+</div>
+<div>
+<h3>Risks: GPU resale value and deposit flight decide the deal</h3>
+<div class="scroll"><table><thead><tr><th>Risk</th><th style="text-align:left">What could go wrong</th><th>Severity</th></tr></thead><tbody id="urisk"></tbody></table></div>
+<details><summary>Diligence questions for management (8)</summary><ol class="cap" style="margin-top:10px;padding-left:18px">
+<li>Who are the ten wallets behind 57% of the Nov 1 redemption, and how concentrated are the remaining deposits?</li>
+<li>Have any loans paid late, been restructured or defaulted? What are recoveries on repossessed GPUs?</li>
+<li>What are utilization and DSCR for each borrower, and how does the $128.9M loan perform?</li>
+<li>How long is the sUSDai redemption queue today, and has it ever passed 30 days?</li>
+<li>Who bought the Duos loan, why at par, and what premium do buyers pay for seasoned loans?</li>
+<li>Has US counsel opined on whether sUSDai is a security or a payment stablecoin?</li>
+<li>How are GPU liens enforced in Finland, Canada and the Middle East?</li>
+<li>How is collateral marked today, and would USD.AI use Ornn's GPU price index?</li>
+</ol></details>
+<p class="cap">Figures as of November 2026 from DefiLlama, Aavescan, an onchain dashboard and USD.AI's own disclosures; full source list in the memo. Written as a practice memo for a Galaxy Ventures application; no affiliation with Galaxy or USD.AI.</p>
+</div>
+</div>
+
+</div></section>
+
+<section class="band alt" id="downloads"><div class="wrap">
+<h2>Downloads</h2>
+<div class="dl">
+<a href="files/IC_Memo_Evergreen_Allocation.pdf" data-dl="IC_Memo_Evergreen_Allocation.pdf" target="_blank" rel="noopener"><b>IC memo (PDF)</b><span>4-page investment committee memo</span></a>
+<a href="files/Evergreen_Fund_Monitor.xlsx" download><b>Monitoring workbook (Excel)</b><span>10 tabs, live formulas, a source next to every input</span></a>
+<a href="files/Evergreen_Fund_Review_Summary.pdf" data-dl="Evergreen_Fund_Review_Summary.pdf" target="_blank" rel="noopener"><b>Summary deck (PDF)</b><span>6 slides</span></a>
+<a href="files/USD_AI_Investment_Memo.pdf" data-dl="USD_AI_Investment_Memo.pdf" target="_blank" rel="noopener"><b>USD.AI memo (PDF)</b><span>12-page private credit and VC memo</span></a>
+</div>
+<p id="dlmsg" aria-live="polite"></p>
+</div></section>
+
+<footer class="band"><div class="wrap">
+<p style="color:var(--ink)">I'm <b>Zafeer Arefeen</b>, a mathematics student at the University of Texas at Austin (Class of 2028) interested in portfolio management and alternative investments. I built both of these projects independently from public sources. You can reach me at zafeer.arefeen@utexas.edu.</p>
+<p>These are independent student research projects I did for educational purposes only. They are not investment advice and not an offer or solicitation to buy or sell any security. I took all fund data from public SEC filings as of September 30, 2026, and it may contain errors; I've labeled every figure I calculated myself. I'm not affiliated with any of the fund managers or platforms mentioned, and none of them reviewed or endorsed this work. Past performance does not guarantee future results. The USD.AI memo uses public protocol data and outside trackers as of November 2026.</p>
+</div></footer>
+
+<script>
+{
+const F=[["K-PEC","--kpec"],["BXPE","--bxpe"],["BCRED","--bcred"],["HLEND","--hlend"]];
+const key=F.map(f=>`<span><i style="background:var(${f[1]})"></i>${f[0]}</span>`).join('');
+document.getElementById('k1').innerHTML=key;
+const Q=["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"];
+const FL=[[575,1939,2022,920],[1326,959,2480,730],[685,589,2128,702],[869,774,2059,826],[1205,989,2795,957],[886,921,2632,1019],[1109,1111,1946,891],[957,1178,1976,925],[979,1340,-781,241],[690,1546,-2778,-300],[732,1485,-1899,-369]];
+const fmt=n=>(n<0?'−':'')+Math.abs(n).toLocaleString('en-US');
+const fs=document.getElementById('flows');
+const drawFlows=()=>{const W=fs.clientWidth,H=fs.clientHeight,L=W<520?50:56,R=8,T=12,B=28;const lo=-3000,hi=3000,y=v=>T+(hi-v)/(hi-lo)*(H-T-B);const bw=(W-L-R)/Q.length;let s='';
+for(let v=lo;v<=hi;v+=1000){s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" ${v===0?'stroke-width="2" style="stroke:var(--ink)"':''}/>`;if(W>=520||v%2000===0)s+=`<text x="${L-6}" y="${y(v)+4}" text-anchor="end">${fmt(v)}</text>`}
+Q.forEach((q,i)=>{const x0=L+i*bw+bw*.12,w=bw*.76/4;FL[i].forEach((v,j)=>{const a=y(Math.max(v,0)),b=y(Math.min(v,0));s+=`<rect x="${x0+j*w}" y="${a}" width="${Math.max(w-1,1)}" height="${Math.max(b-a,0.5)}" fill="var(${F[j][1]})"><title>${F[j][0]} ${q}: ${fmt(v)}M</title></rect>`});if(W>=520||i%2===0)s+=`<text x="${L+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${q}</text>`});
+s+=`<text x="${L+8*bw}" y="${y(-2400)}" text-anchor="end" style="fill:var(--red)">BCRED −$2,778M in Q2 26</text>`;
+fs.innerHTML=s};
+const ro1=new ResizeObserver(drawFlows);ro1.observe(fs);
+
+const LQ=["Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"];
+const BC=[1.5,1.5,2.6,1.8,4.5,7.0,5.0,5.0],HR=[1.40,2.42,1.96,1.65,4.06,5.00,5.00,5.00],HQ=[null,null,null,null,null,9.25,13.30,11.44];
+document.getElementById('k2').innerHTML='<span><i style="background:var(--bcred)"></i>BCRED repurchased</span><span><i style="background:var(--hlend)"></i>HLEND repurchased</span><span><i style="border:2px solid var(--hlend);background:none"></i>HLEND requested</span>';
+const ls=document.getElementById('liq');
+const drawLiq=()=>{const W=ls.clientWidth,H=ls.clientHeight,L=36,R=8,T=14,B=28,y=v=>T+(14-v)/14*(H-T-B),bw=(W-L-R)/LQ.length;let s='';
+for(let v=0;v<=14;v+=W<520?7:3.5){s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}%</text>`}
+LQ.forEach((q,i)=>{const w=bw*.8/3,x0=L+i*bw+bw*.1;s+=`<rect x="${x0}" y="${y(BC[i])}" width="${w-1}" height="${y(0)-y(BC[i])}" fill="var(--bcred)"><title>BCRED ${q}: ${BC[i]}%</title></rect><rect x="${x0+w}" y="${y(HR[i])}" width="${w-1}" height="${y(0)-y(HR[i])}" fill="var(--hlend)"><title>HLEND ${q}: ${HR[i]}%</title></rect>`;
+if(HQ[i]!=null){s+=`<rect x="${x0+2*w+1}" y="${y(HQ[i])+1}" width="${w-3}" height="${y(0)-y(HQ[i])-1}" fill="none" stroke="var(--hlend)" stroke-width="2"><title>HLEND requested ${q}: ${HQ[i]}%</title></rect>`;if(W>=420)s+=`<text x="${x0+2.5*w}" y="${y(HQ[i])-5}" text-anchor="middle" style="fill:var(--ink)">${HQ[i].toFixed(1)}</text>`}
+if(W>=520||i%2)s+=`<text x="${L+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${q}</text>`});
+s+=`<line x1="${L}" x2="${W-R}" y1="${y(5)}" y2="${y(5)}" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 4"/>`;
+ls.innerHTML=s};
+const ro2=new ResizeObserver(drawLiq);ro2.observe(ls);
+
+const fees=[["K-PEC",1.69,2.75,0],["BXPE",1.94,2.68,0],["BCRED",1.44,1.38,4.25],["HLEND",1.55,1.47,6.11]],FM=9.13;
+document.getElementById('feerows').innerHTML=fees.map(f=>{const t=f[1]+f[2]+f[3];return `<div class="row"><span>${f[0]}</span><span class="bar"><i style="width:${f[1]/FM*100}%;background:var(--ink)" title="Base ${f[1]}%"></i><i style="width:${f[2]/FM*100}%;background:var(--bxpe)" title="Performance ${f[2]}%"></i><i style="width:${f[3]/FM*100}%;background:var(--bcred)" title="Interest ${f[3]}%"></i></span><span class="v">${t.toFixed(2)}%</span></div>`}).join('');
+
+const mixes=[["Recommended",65,0,35,35,"3.4%","$15,460","1.64%","6.08%","Passes both",1],["Alt A, income",50,10,40,50,"4.8%","$21,803","1.61%","6.58%","Fails gating",0],["Alt B, least gating",80,0,20,20,"2.0%","$8,834","1.66%","5.38%","Fails 70% cap",0],["First draft",45,20,35,55,"5.3%","$23,729","1.59%","6.61%","Fails gating",0]];
+document.getElementById('mixrows').innerHTML=mixes.map(m=>`<div class="row${m[10]?' rec':''}"><span>${m[0]}</span><span class="bar"><i style="width:${m[1]}%;background:var(--kpec)" title="K-PEC ${m[1]}%"></i><i style="width:${m[2]}%;background:var(--bcred)" title="BCRED ${m[2]}%"></i><i style="width:${m[3]}%;background:var(--hlend)" title="HLEND ${m[3]}%"></i></span><span class="v">${m[1]}/${m[2]}/${m[3]}</span></div>`).join('');
+document.getElementById('gaterows').innerHTML=mixes.map(m=>`<div class="row${m[10]?' rec':''}"><span>${m[0]}</span><span class="bar"><i style="width:${m[4]}%;background:${m[4]>40?'var(--red)':'var(--hlend)'}"></i><span class="mark" style="left:40%"></span></span><span class="v">${m[4]}%</span></div>`).join('');
+document.getElementById('mixt').innerHTML=mixes.map(m=>`<tr${m[10]?' class="rec"':''}><td>${m[0]}</td><td>${m[5]}</td><td>${m[6]}</td><td>${m[7]}</td><td>${m[8]}</td><td${m[10]?'':' class="flag"'}>${m[9]}</td></tr>`).join('');
+
+const rows=[["Strategy","Private equity","Private equity","Private credit (BDC)","Private credit (BDC)"],["Manager","KKR","Blackstone","Blackstone","HPS"],["Net assets","$12,783M","$16,072M","$41,130M","$11,798M"],["NAV per share","$36.59","$39.30","$23.51","$24.45"],["1-year total return*","12.1%","22.4%","3.6%","7.0%"],["3-year return, annualized*","N/A (under 3 yrs)","N/A (under 3 yrs)","8.1%","9.9%"],["Since inception, annualized*","12.1%","17.9%","8.9%","9.9%"],["Distribution rate*","None paid","None paid","9.2%","9.8%"],["Non-accruals, % at cost","n/a","n/a","!2.7%","0.8%"],["Debt-to-equity","0.00x","0.00x","0.85x","0.93x"],["First lien, % of fair value","n/a","n/a","90.6%","94.6%"],["Floating rate","n/a","n/a","99.8%","98.7%"],["Portfolio companies","Not disclosed","Not disclosed","629","363"],["Repurchase limit per quarter","5% of NAV","3% of units","5% of shares","5% of shares"],["Quarters prorated (last 8)","0","0","!2","!3"],["Q3 2026 net flow","+$732M","+$1,485M","!−$1,899M","!−$369M"],["Base fees and expenses","1.69%","1.94%","1.44%","1.55%"],["Early repurchase fee","5% (under 2 yrs)","5% (under 2 yrs)","2% (under 1 yr)","2% (under 1 yr)"],["Investor eligibility","Accredited","Qualified purchasers","Suitability standards","Suitability standards"],["Open to this client?","Yes","!No (QP only)","Yes","Yes"],["Risk flags triggered","0","0","!3","!2"]];
+document.getElementById('ft').innerHTML=rows.map(r=>'<tr>'+r.map((c,i)=>i===0?`<td>${c}</td>`:c[0]==='!'?`<td class="flag">${c.slice(1)}</td>`:`<td>${c}</td>`).join('')+'</tr>').join('');
+
+document.getElementById('k3').innerHTML=key;
+const ND=["12/23","3/24","6/24","9/24","12/24","3/25","6/25","9/25","12/25","3/26","6/26","9/26"];
+const NV=[[25.88,26.15,27.34,28.69,28.94,30.58,31.38,32.63,33.61,34.76,35.60,36.59],[null,25.43,26.19,27.22,28.36,29.56,31.36,32.12,33.72,35.47,38.33,39.30],[25.39,25.51,25.57,25.50,25.42,25.25,25.17,24.97,24.79,24.19,23.65,23.51],[25.06,25.36,25.52,25.56,25.59,25.47,25.22,25.27,25.22,24.79,24.42,24.45]];
+const ns=document.getElementById('nav');
+const drawNav=()=>{const W=ns.clientWidth,H=ns.clientHeight,L=40,R=W<520?60:116,T=12,B=28,lo=22,hi=40,y=v=>T+(hi-v)/(hi-lo)*(H-T-B),x=i=>L+i*(W-L-R)/(ND.length-1);let s='';
+for(let v=lo;v<=hi;v+=W<520?6:3){s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">$${v}</text>`}
+ND.forEach((d,i)=>{if(W>=520||i%3===0)s+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${d}</text>`});
+NV.forEach((ser,j)=>{const pts=ser.map((v,i)=>v==null?null:`${x(i)},${y(v)}`).filter(Boolean).join(' ');s+=`<polyline points="${pts}" fill="none" stroke="var(${F[j][1]})" stroke-width="2.5"/>`;const last=ser[ser.length-1];s+=`<circle cx="${x(ser.length-1)}" cy="${y(last)}" r="3.5" fill="var(${F[j][1]})"/><text x="${x(ser.length-1)+6}" y="${y(last)+(j===2?12:j===3?-4:4)}" style="fill:var(--ink)">${W<520?'':F[j][0]+' '}$${last.toFixed(2)}</text>`});
+ns.innerHTML=s};
+const ro3=new ResizeObserver(drawNav);ro3.observe(ns);
+const yl=[["Active GPU loans",20.5,"--hlend"],["Escrow",6.4,"--bxpe"],["Idle reserves",13.6,"--bcred"]];
+document.getElementById('yrows').innerHTML=yl.map(r=>`<div class="row"><span>${r[0]}</span><span class="bar"><i style="width:${r[1]/40.4*100}%;background:var(${r[2]})"></i></span><span class="v">$${r[1]}M</span></div>`).join('')+`<div class="row rec"><span>Total paid out</span><span class="bar"><i style="width:${20.5/40.4*100}%;background:var(--hlend)"></i><i style="width:${6.4/40.4*100}%;background:var(--bxpe)"></i><i style="width:${13.6/40.4*100}%;background:var(--bcred)"></i></span><span class="v">$40.4M</span></div>`;
+const ur=[["GPU resale value","New chips and falling rental prices leave collateral lent at 70% to 80% LTV worth less than the loan; only $26.3M of used-GPU sales on public record","High"],["Deposit flight","$118M left on Nov 1, ten wallets took 57%, and the queue pays only from available cash; no committed backstop found","High"],["Borrower concentration","The largest facility ($128.9M) is about 42% of the $305M book","High"],["Yield below 7% target","Organic yield 6.53% from Oct 15 to Nov 1 and about 1.5% from Nov 13 to 18","Medium"],["DeFi contagion","Fluid holds about 42% of sUSDai and prices USDai at a hard $1","Medium"],["Legal enforceability","GPU liens in Finland, Sweden and Canada are untested in court","Medium"],["Regulation","The SEC could treat sUSDai as a security","Medium"],["Token overhang","About 1.75B CHIP unlock in April 2027","Low for a lender"]];
+document.getElementById('urisk').innerHTML=ur.map(r=>`<tr><td>${r[0]}</td><td class="w">${r[1]}</td><td class="sev${r[2]==='High'?' h':''}">${r[2]}</td></tr>`).join('');
+const msg=document.getElementById('dlmsg');
+let dl=null;
+if(window.claude&&window.claude.use){window.claude.use("downloads").then(d=>{dl=d}).catch(()=>{})}
+document.querySelectorAll('a[data-dl]').forEach(a=>a.addEventListener('click',e=>{if(!dl)return;e.preventDefault();const name=a.dataset.dl;msg.textContent='Preparing '+name+'…';fetch(a.getAttribute('href')).then(r=>{if(!r.ok)throw new Error();return r.blob()}).then(b=>dl.save({filename:name,data:b})).then(()=>{msg.textContent='Saved '+name+'.'}).catch(err=>{msg.textContent=err&&err.code==='declined'?'Download cancelled.':'This view can\'t save files. Open the page in a browser to download.'})}));
+}
+</script>
+</body>
+</html>
